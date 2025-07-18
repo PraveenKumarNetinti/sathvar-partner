@@ -58,9 +58,9 @@ const TABS = [
         href: "/settings/contact-details",
       },
       {
-        label: "Operation Details",
+        label: "Operational Details",
         icon: RiShakeHandsLine,
-        href: "/settings/operation-details",
+        href: "/settings/operational-details",
       },
       {
         label: "Bank Details",
@@ -239,7 +239,9 @@ function SettingsVerticalMenu() {
                     </TabMenuVertical.Trigger>
                   ))}
                 </div>
-                {i < arr.length - 1 && <Divider.Root variant="line-spacing" className="my-5" />}
+                {i < arr.length - 1 && (
+                  <Divider.Root variant="line-spacing" className="my-5" />
+                )}
               </React.Fragment>
             ))}
           </TabMenuVertical.List>
