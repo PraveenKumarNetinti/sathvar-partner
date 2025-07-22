@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as DialogPrimitives from "@radix-ui/react-dialog";
 import {
   RiArrowRightSLine,
   RiBox3Line,
@@ -435,23 +436,28 @@ function LogoutModal({ collapsed }: { collapsed: boolean }) {
         </div>
       </Modal.Trigger>
       <Modal.Content
+        showClose={false}
         overlayClassName="justify-center"
         className="max-w-[440px]"
       >
-        <Modal.Body className="flex items-start gap-4">
-          <div className="rounded-10 bg-error-lighter flex size-10 shrink-0 items-center justify-center">
-            <RiLogoutBoxRLine className="text-error-base size-6" />
-          </div>
-          <div className="space-y-1">
-            <div className="text-label-md text-text-strong-950">
-              Confirm Logout
+        <Modal.Body>
+          <div className="flex gap-4">
+            <div className="flex size-10 shrink-0 items-center justify-center rounded-10 bg-error-lighter">
+              <RiLogoutBoxRLine className="size-6 text-error-base" />
             </div>
-            <div className="text-paragraph-sm text-text-sub-600">
-              Are you sure you want to log out of your account? You'll need to
-              log in again to access your data.
+
+            <div>
+              <DialogPrimitives.Title className="text-label-md text-text-strong-950">
+                Confirm Logout
+              </DialogPrimitives.Title>
+              <DialogPrimitives.Description className="mt-1 text-paragraph-sm text-text-sub-600">
+                Are you sure you want to log out of your account? You'll need to
+                log in again to access your data.
+              </DialogPrimitives.Description>
             </div>
           </div>
         </Modal.Body>
+
         <Modal.Footer>
           <Modal.Close asChild>
             <Button.Root
