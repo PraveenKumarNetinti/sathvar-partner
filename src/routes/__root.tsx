@@ -21,7 +21,7 @@ function RootComponent() {
           <SearchMenu />
           <NotificationProvider />
           <NetworkStatusIndicator />
-          <ScrollArea.Root type="auto" className="h-[100vh] overflow-hidden">
+          <ScrollArea.Root type="scroll" className="h-[100vh] overflow-hidden">
             <ScrollArea.Viewport className="h-full w-full">
               <Outlet />
             </ScrollArea.Viewport>
