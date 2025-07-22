@@ -2,7 +2,7 @@ import React from "react";
 import {
   RiArrowDownSLine,
   RiArrowUpSLine,
-  RiBuilding2Line,
+  RiShakeHandsLine,
 } from "@remixicon/react";
 import { createFileRoute } from "@tanstack/react-router";
 
@@ -14,7 +14,7 @@ import * as Accordion from "@/components/ui/accordion";
 import * as Divider from "@/components/ui/divider";
 import * as ScrollArea from "@/components/ui/scroll-area";
 
-export const Route = createFileRoute("/settings/operational-details")({
+export const Route = createFileRoute("/(main)/settings/operational-details")({
   component: RouteComponent,
 });
 
@@ -24,7 +24,7 @@ function RouteComponent() {
       <Header
         icon={
           <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-bg-white-0 shadow-regular-xs ring-1 ring-inset ring-stroke-soft-200">
-            <RiBuilding2Line className="size-6 text-text-sub-600" />
+            <RiShakeHandsLine className="size-6 text-text-sub-600" />
           </div>
         }
         title="Operational Details"

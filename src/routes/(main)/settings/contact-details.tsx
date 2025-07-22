@@ -23,7 +23,7 @@ import * as Input from "@/components/ui/input";
 import * as Kbd from "@/components/ui/kbd";
 import * as Table from "@/components/ui/table";
 
-export const Route = createFileRoute("/settings/contact-details")({
+export const Route = createFileRoute("/(main)/settings/contact-details")({
   component: RouteComponent,
 });
 

@@ -24,7 +24,7 @@ import * as Divider from "@/components/ui/divider";
 import * as TabMenuHorizontal from "@/components/ui/tab-menu-horizontal";
 import * as TabMenuVertical from "@/components/ui/tab-menu-vertical";
 
-export const Route = createFileRoute("/settings")({
+export const Route = createFileRoute("/(main)/settings")({
   component: RouteComponent,
 });
 

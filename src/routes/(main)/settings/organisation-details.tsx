@@ -6,7 +6,7 @@ import Header from "@/components/header";
 import * as Divider from "@/components/ui/divider";
 import * as ScrollArea from "@/components/ui/scroll-area";
 
-export const Route = createFileRoute("/settings/organisation-details")({
+export const Route = createFileRoute("/(main)/settings/organisation-details")({
   component: RouteComponent,
 });
 
@@ -150,7 +150,7 @@ const dummyOrganizationData: Record<string, any> = {
   sales_tax_gst_or_vat_number: "29AAJCA1234M1Z5",
 };
 
-function OrganisationDetailsForm() {
+export function OrganisationDetailsForm() {
   return (
     <ScrollArea.Root
       type="scroll"
@@ -185,7 +185,7 @@ function FormRow({
 }) {
   return (
     <>
-      <div className="grid items-center gap-4 sm:grid-cols-[minmax(0,1fr)_312px] sm:gap-6">
+      <div className="grid items-center gap-6 md:grid-cols-[minmax(0,26fr)_minmax(0,37fr)]">
         <div>
           <div className="text-label-sm text-text-strong-950">{label}</div>
           {description && (

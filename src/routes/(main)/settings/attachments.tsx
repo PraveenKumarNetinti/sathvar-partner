@@ -13,7 +13,7 @@ import * as FileFormatIcon from "@/components/ui/file-format-icon";
 import * as ScrollArea from "@/components/ui/scroll-area";
 import * as Tooltip from "@/components/ui/tooltip";
 
-export const Route = createFileRoute("/settings/attachments")({
+export const Route = createFileRoute("/(main)/settings/attachments")({
   component: RouteComponent,
 });
 
@@ -177,7 +177,7 @@ function IconCircleDashed(props: React.SVGProps<SVGSVGElement>) {
 function AttachmentCards() {
   return (
     <div className="flex flex-col gap-3 w-full px-4 py-6 lg:px-8">
-      {modules.map((module) => (
+      {/* {modules.map((module) => (
         <label
           key={module.id}
           htmlFor={module.id}
@@ -200,13 +200,6 @@ function AttachmentCards() {
                       </div>
                       <Tooltip.Root>
                         <Tooltip.Trigger>
-                          {/* <Button.Root
-                            variant="neutral"
-                            mode="stroke"
-                            size="xsmall"
-                          >
-                            Hover or focus
-                          </Button.Root> */}
                           <IconInfoCustom className="size-3 text-text-disabled-300" />
                         </Tooltip.Trigger>
                         <Tooltip.Content side="bottom" size="xsmall">
@@ -264,13 +257,6 @@ function AttachmentCards() {
                             <span className="text-paragraph-xs text-text-sub-600">
                               {module.file.size}
                             </span>
-                            {/* <span className="text-paragraph-xs text-text-sub-600">
-                              ∙
-                            </span>
-                            <RiCheckboxCircleFill className="size-4 shrink-0 text-success-base" />
-                            <span className="text-paragraph-xs text-text-strong-950">
-                              Completed
-                            </span> */}
                           </div>
                         </div>
                         <CompactButton.Root variant="ghost" size="large">
@@ -279,52 +265,98 @@ function AttachmentCards() {
                       </div>
                     </div>
                   )}
-
-                  {/* <Button.Root variant="neutral" className="mt-3 w-full">
-                    <Button.Icon as={RiUpload2Line} />
-                    Upload File
-                  </Button.Root> */}
                 </div>
-
-                {/* <StatusBadge.Root
-                  variant="light"
-                  status={module.file ? "completed" : "disabled"}
-                  className="bg-transparent text-label-xs"
-                >
-                  <StatusBadge.Dot />
-                  <span className="text-label-xs">
-                    {module.file ? "Uploaded" : "Not Uploaded"}
-                  </span>
-                </StatusBadge.Root> */}
-
-                {/* <StatusBadge.Root
-                  variant="light"
-                  status={
-                    module.badge.color as
-                      | "failed"
-                      | "pending"
-                      | "completed"
-                      | "disabled"
-                  }
-                  className={`bg-transparent text-label-xs ${
-                    module.badge.color === "information"
-                      ? "text-information-base"
-                      : ""
-                  }`}
-                >
-                  <StatusBadge.Dot
-                    className={
-                      module.badge.color === "information"
-                        ? "text-information-base"
-                        : ""
-                    }
-                  />
-                  <span className="text-label-xs">{module.badge.label}</span>
-                </StatusBadge.Root> */}
               </div>
             </div>
           </div>
         </label>
+      ))} */}
+
+      {modules.map((module, moduleIndex) => (
+        <React.Fragment key={module.id}>
+          <div className="w-full flex items-start gap-3 py-4">
+            {module.file ? (
+              <RiCheckboxCircleFill className="size-5 text-success-base" />
+            ) : (
+              <IconCircleDashed className="size-4 text-faded-base mt-0.5" />
+            )}
+
+            <div className="">
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1">
+                  <div className="text-label-sm text-text-strong-950">
+                    {module.title}
+                  </div>
+                  <Tooltip.Root>
+                    <Tooltip.Trigger>
+                      <IconInfoCustom className="size-3 text-text-disabled-300" />
+                    </Tooltip.Trigger>
+                    <Tooltip.Content side="bottom" size="xsmall">
+                      {module.info}
+                    </Tooltip.Content>
+                  </Tooltip.Root>
+                </div>
+              </div>
+              <div className="mt-1 text-paragraph-xs text-text-sub-600">
+                {module.description}
+              </div>
+
+              <div className="group-hover:shadow-custom-xs mt-3 inline-flex w-full flex-wrap gap-2 rounded-md bg-bg-weak-50 px-3 py-1.5 text-paragraph-xs text-text-sub-600 transition-colors duration-200 group-hover:bg-bg-white-0">
+                <div className="flex items-center gap-1">
+                  <span className="text-paragraph-xs text-text-sub-600">
+                    File Type:
+                  </span>
+                  <span className="text-label-xs text-text-strong-950">
+                    {module.type}
+                  </span>
+                </div>
+                <span className="hidden text-text-disabled-300 sm:inline">
+                  ・
+                </span>
+                <div className="flex items-center gap-1">
+                  <span className="text-paragraph-xs text-text-sub-600">
+                    Mandatory:
+                  </span>
+                  <span className="text-label-xs text-text-strong-950">
+                    {module.is_mandatory ? "Yes" : "No"}
+                  </span>
+                </div>
+                <span className="hidden text-text-disabled-300 sm:inline">
+                  ・
+                </span>
+                <div className="flex items-center gap-1">
+                  <span className="text-paragraph-xs text-text-sub-600">
+                    Uploaded
+                  </span>
+                  <span className="text-label-xs text-text-strong-950">
+                    {module.file && module.file.name ? "Yes" : "No"}
+                  </span>
+                </div>
+              </div>
+            </div>
+            {module.file && (
+              <div className="ml-auto min-w-[320px] rounded-xl bg-bg-white-0 mt-3 p-4 pl-3.5 ring-1 ring-inset ring-stroke-soft-200">
+                <div className="flex gap-3">
+                  <FileFormatIcon.Root format="PDF" color="red" />
+                  <div className="flex-1 space-y-1">
+                    <div className="text-label-sm text-text-strong-950">
+                      {module.file.name}
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <span className="text-paragraph-xs text-text-sub-600">
+                        {module.file.size}
+                      </span>
+                    </div>
+                  </div>
+                  <CompactButton.Root variant="ghost" size="large">
+                    <CompactButton.Icon as={RiDownload2Line} />
+                  </CompactButton.Root>
+                </div>
+              </div>
+            )}
+          </div>
+          {moduleIndex !== modules.length - 1 && <Divider.Root />}
+        </React.Fragment>
       ))}
     </div>
   );
