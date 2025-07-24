@@ -10,7 +10,7 @@ export const FLOW_STEPS = [
   { label: "Attachments", indicator: "7" },
 ];
 
-export const activeStepStore = new Store(5);
+export const activeStepStore = new Store(1);
 
 export const MAX_STEP = FLOW_STEPS.length - 1;
 export const MIN_STEP = 0;
